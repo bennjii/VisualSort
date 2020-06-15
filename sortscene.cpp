@@ -38,21 +38,37 @@ void SortScene::updatePos(int i)
 }
 
 void SortScene::step(){
-    if(bars[pos]->rect().height() > bars[pos + 1]->rect().height()){
-        swap(pos, pos + 1);
+    if(toggling){
+            addText("Switching");
+
+        if(bars[pos]->rect().height() > bars[pos + 1]->rect().height()){
+            swap(pos, pos + 1);
+        }
+
+        bars[pos]->setBrush(QColor(255,255,255));
+        bars[pos + 1]->setBrush(QColor(255,255,255));
+
+        ++pos;
+        if(pos >= barCount - 1) {
+            pos = 0;
+        }
+
+        bars[pos]->setBrush(QColor(255,0,0));
+        bars[pos + 1]->setBrush(QColor(255,0,0));
+    }else{
+        // Highlight and Wait for input
+        bars[pos]->setBrush(QColor(255,0,0));
+        bars[pos + 1]->setBrush(QColor(255,0,0));
+        toggling = !toggling;
+
+
     }
-
-    ++pos;
-
-    if(pos > barCount - 2) {
-        pos = 0;
-    }
-
-    toggling = !toggling;
 }
 
 void SortScene::swap(int first, int second)
 {
+    toggling = false;
+
     std::swap(bars[first], bars[second]);
 
     updatePos(first);
