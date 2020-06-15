@@ -10,11 +10,15 @@ class SortScene : public QGraphicsScene
 public:
     SortScene();
 
+    void shuffle();
+
 private:
+    void updatePos(int i);
+
     QVector<QGraphicsRectItem*> bars;
     int barCount = 10;
     int barWidth = 50;
-    float barGap = 5;
+    int barGap = 5;
 
 };
 
