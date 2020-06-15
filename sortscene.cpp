@@ -95,3 +95,12 @@ void SortScene::stop()
 {
     timer.stop();
 }
+
+void SortScene::pause()
+{
+    timer.stop();
+}
+
+bool SortScene::isPlaying() {
+    return timer.isActive();
+}

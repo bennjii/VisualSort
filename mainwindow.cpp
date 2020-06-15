@@ -12,8 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     );
 
     connect(
-       ui->playButton, &QPushButton::clicked,
-       &scene, &SortScene::play
+       ui->togglePlayButton, &QPushButton::clicked,
+       this, &MainWindow::togglePlay
     );
 
     ui->graphicsView->setScene(&scene);
@@ -24,3 +24,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::togglePlay()
+{
+    if(scene.isPlaying()){
+        scene.pause();
+        ui->togglePlayButton->setText("Play");
+    }else{
+        scene.play();
+        ui->togglePlayButton->setText("Pause");
+    }
+}

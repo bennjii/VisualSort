@@ -10,11 +10,14 @@ class SortScene : public QGraphicsScene
     Q_OBJECT
 public:
     SortScene();
+    bool isPlaying();
 
  public slots:
     void step();
     void play();
     void stop();
+    void pause();
+
     void shuffle();
     void swap(int first, int second);
 
