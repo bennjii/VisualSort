@@ -24,7 +24,6 @@ private:
     int barGap = 5;
 
     int pos = 0;
-    bool toggling = false;
 };
 
 #endif // SORTSCENE_H
