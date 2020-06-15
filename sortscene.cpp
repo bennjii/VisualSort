@@ -2,6 +2,10 @@
 
 SortScene::SortScene()
 {
-    addRect(0, 0, 500, 100);
-    addText("Hello World... its a sad world");
+    for(int i = 0; i < barCount; i++){
+        bars.push_back(
+                addRect(i * (barWidth + barGap) , -barWidth * (i + 1), barWidth, barWidth * (i + 1))
+        );
+
+    }
 }
