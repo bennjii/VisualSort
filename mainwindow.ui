@@ -14,14 +14,21 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QGraphicsView" name="graphicsView"/>
-    </item>
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="2">
      <widget class="QPushButton" name="stepButton">
       <property name="text">
        <string>Step Sort</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="3">
+     <widget class="QGraphicsView" name="graphicsView"/>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <widget class="QPushButton" name="playButton">
+      <property name="text">
+       <string>Play</string>
       </property>
      </widget>
     </item>

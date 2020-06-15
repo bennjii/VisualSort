@@ -3,6 +3,7 @@
 
 #include <QGraphicsScene>
 #include <QVector>
+#include <QTimer>
 
 class SortScene : public QGraphicsScene
 {
@@ -12,6 +13,8 @@ public:
 
  public slots:
     void step();
+    void play();
+    void stop();
     void shuffle();
     void swap(int first, int second);
 
@@ -23,7 +26,12 @@ private:
     int barWidth = 50;
     int barGap = 5;
 
+    int sortedCount = 0;
     int pos = 0;
+
+    int delay = 100;
+
+    QTimer timer;
 };
 
 #endif // SORTSCENE_H

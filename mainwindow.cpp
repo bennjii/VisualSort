@@ -10,6 +10,12 @@ MainWindow::MainWindow(QWidget *parent)
         ui->stepButton, &QPushButton::clicked,
         &scene, &SortScene::step
     );
+
+    connect(
+       ui->playButton, &QPushButton::clicked,
+       &scene, &SortScene::play
+    );
+
     ui->graphicsView->setScene(&scene);
 }
 

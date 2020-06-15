@@ -1,12 +1,18 @@
 #include "sortscene.h"
 
 #include <QGraphicsRectItem>
+#include <QTimer>
 #include <algorithm>
 #include <random>
 
 SortScene::SortScene()
 {
-    for(int i = 0; i < barCount; i++){
+    connect(
+       &timer, &QTimer::timeout,
+       this, &SortScene::step
+    );
+
+    for(int i = 0; i < barCount - sortedCount; i++){
         bars.push_back(addRect(
             i * (barWidth + barGap),
             -barWidth * (i + 1),
@@ -38,19 +44,35 @@ void SortScene::updatePos(int i)
 }
 
 void SortScene::step(){
+    if(sortedCount == barCount){
+        bars[0]->setBrush(QColor(0,255,0));
+        bars[1]->setBrush(QColor(0,255,0));
+        return;
+    }
+
     if(bars[pos]->rect().height() > bars[pos + 1]->rect().height()){
         swap(pos, pos + 1);
     }else{
-        bars[pos]->setBrush(QColor(255,255,255));
-        bars[pos + 1]->setBrush(QColor(255,255,255));
-
-        ++pos;
-        if(pos >= barCount - 1) {
-            pos = 0;
+        if(sortedCount < barCount - 2){
+            bars[pos]->setBrush(QColor(255,255,255));
+            bars[pos + 1]->setBrush(QColor(255,255,255));
         }
 
-        bars[pos]->setBrush(QColor(255,0,0));
-        bars[pos + 1]->setBrush(QColor(255,0,0));
+        ++pos;
+        if(pos >= (barCount - sortedCount) - 1) {
+            bars[(barCount - 1) - sortedCount]->setBrush(QColor(0,255,0));
+            pos = 0;
+            ++sortedCount;
+        }
+
+        if(sortedCount < barCount - 1){
+            bars[pos]->setBrush(QColor(255,0,0));
+            bars[pos + 1]->setBrush(QColor(255,0,0));
+        }
+
+        if(pos >= (barCount - sortedCount) - 1) {
+            bars[(barCount - sortedCount)]->setBrush(QColor(0,255,0));
+        }
     }
 }
 
@@ -62,4 +84,14 @@ void SortScene::swap(int first, int second)
 
     updatePos(first);
     updatePos(second);
+}
+
+void SortScene::play()
+{
+    timer.start(delay);
+}
+
+void SortScene::stop()
+{
+    timer.stop();
 }
