@@ -36,3 +36,25 @@ void SortScene::updatePos(int i)
     rect.moveLeft(i * (barWidth + barGap));
     bars[i]->setRect(rect);
 }
+
+void SortScene::step(){
+    if(bars[pos]->rect().height() > bars[pos + 1]->rect().height()){
+        swap(pos, pos + 1);
+    }
+
+    ++pos;
+
+    if(pos > barCount - 2) {
+        pos = 0;
+    }
+
+    toggling = !toggling;
+}
+
+void SortScene::swap(int first, int second)
+{
+    std::swap(bars[first], bars[second]);
+
+    updatePos(first);
+    updatePos(second);
+}

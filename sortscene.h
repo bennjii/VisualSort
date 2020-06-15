@@ -10,7 +10,10 @@ class SortScene : public QGraphicsScene
 public:
     SortScene();
 
+ public slots:
+    void step();
     void shuffle();
+    void swap(int first, int second);
 
 private:
     void updatePos(int i);
@@ -20,6 +23,8 @@ private:
     int barWidth = 50;
     int barGap = 5;
 
+    int pos = 0;
+    bool toggling = false;
 };
 
 #endif // SORTSCENE_H
