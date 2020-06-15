@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "sortscene.h"
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -17,5 +18,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    SortScene scene;
 };
 #endif // MAINWINDOW_H
