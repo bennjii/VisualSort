@@ -1,4 +1,5 @@
 #include "sortscene.h"
+#include "mainwindow.h"
 
 #include <QGraphicsRectItem>
 #include <QTimer>
@@ -47,6 +48,7 @@ void SortScene::step(){
     if(sortedCount == barCount){
         bars[0]->setBrush(QColor(0,255,0));
         bars[1]->setBrush(QColor(0,255,0));
+        &MainWindow::togglePlay;
         return;
     }
 

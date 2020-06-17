@@ -25,14 +25,14 @@ private:
     void updatePos(int i);
 
     QVector<QGraphicsRectItem*> bars;
-    int barCount = 10;
-    int barWidth = 50;
+    int barCount = 13;
+    int barWidth = 40;
     int barGap = 5;
 
     int sortedCount = 0;
     int pos = 0;
 
-    int delay = 100;
+    int delay = 25;
 
     QTimer timer;
 };
