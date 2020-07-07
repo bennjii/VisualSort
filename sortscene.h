@@ -13,7 +13,7 @@ public:
     bool isPlaying();
 
  public slots:
-    void step();
+    virtual void step();
     void play();
     void stop();
     void pause();

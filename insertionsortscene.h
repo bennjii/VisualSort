@@ -1,6 +1,7 @@
 #ifndef INSERTIONSORTSCENE_H
 #define INSERTIONSORTSCENE_H
 
+#include "sortscene.h"
 
 class InsertionSortScene : public SortScene
 {

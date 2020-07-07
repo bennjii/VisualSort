@@ -18,9 +18,10 @@ public:
 
 public slots:
     void togglePlay();
+    void step();
 
 private:
     Ui::MainWindow *ui;
-    SortScene scene;
+    SortScene *scene;
 };
 #endif // MAINWINDOW_H

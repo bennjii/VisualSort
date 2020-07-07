@@ -1,14 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "insertionsortscene.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , scene(new InsertionSortScene)
 {
     ui->setupUi(this);
     connect(
         ui->stepButton, &QPushButton::clicked,
-        &scene, &SortScene::step
+        this, &MainWindow::step
     );
 
     connect(
@@ -16,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
        this, &MainWindow::togglePlay
     );
 
-    ui->graphicsView->setScene(&scene);
+    ui->graphicsView->setScene(scene);
 }
 
 MainWindow::~MainWindow()
@@ -24,13 +27,18 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::step()
+{
+    scene->step();
+}
+
 void MainWindow::togglePlay()
 {
-    if(scene.isPlaying()){
-        scene.pause();
+    if(scene->isPlaying()){
+        scene->pause();
         ui->togglePlayButton->setText("Play");
     }else{
-        scene.play();
+        scene->play();
         ui->togglePlayButton->setText("Pause");
     }
 }
