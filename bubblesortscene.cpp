@@ -9,7 +9,7 @@ void BubbleSortScene::step() {
     if(sortedCount == getBarCount()){
         setColour(0, QColor(0,255,0));
         setColour(1, QColor(0,255,0));
-        &MainWindow::togglePlay;
+        emit finished();
         return;
     }
 

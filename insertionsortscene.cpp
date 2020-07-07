@@ -7,7 +7,10 @@ InsertionSortScene::InsertionSortScene()
 
 void InsertionSortScene::step()
 {
-    if(sortedCount == getBarCount()) return;
+    if(sortedCount == getBarCount()){
+        emit finished();
+        return;
+    }
 
     if(pos == -1 || compare(pos, pos+1)){
         pos = sortedCount;

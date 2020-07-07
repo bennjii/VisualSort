@@ -20,6 +20,11 @@ MainWindow::MainWindow(QWidget *parent)
        this, &MainWindow::togglePlay
     );
 
+    connect(
+        scene, &SortScene::finished,
+        this, &MainWindow::togglePlay
+    );
+
     ui->graphicsView->setScene(scene);
 }
 

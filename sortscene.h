@@ -25,6 +25,9 @@ public:
     void swap(int first, int second);
     void setColour(int i, const QColor &colour);
 
+signals:
+    void finished();
+
 private:
     void updatePos(int i);
 
