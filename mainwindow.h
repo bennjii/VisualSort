@@ -17,6 +17,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    template<class T>
+    void initiateScene();
+
 public slots:
     void togglePlay();
     void step();

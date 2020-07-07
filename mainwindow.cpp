@@ -7,7 +7,6 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , scene(new BubbleSortScene)
 {
     ui->setupUi(this);
     connect(
@@ -21,14 +20,11 @@ MainWindow::MainWindow(QWidget *parent)
     );
 
     connect(
-        scene.get(), &SortScene::finished,
-        this, &MainWindow::togglePlay
-    );
-
-    connect(
         ui->algoBox, QOverload<int>::of(&QComboBox::activated),
         this, &MainWindow::selectAlgorithm
     );
+
+    initiateScene<BubbleSortScene>();
 
     ui->graphicsView->setScene(scene.get());
 }
@@ -54,15 +50,32 @@ void MainWindow::togglePlay()
     }
 }
 
+template<class T>
+void MainWindow::initiateScene()
+{
+    scene.reset();
+    scene = std::make_unique<T>();
+
+    ui->graphicsView->setScene(scene.get());
+
+    connect(
+        scene.get(), &SortScene::finished,
+        this, &MainWindow::togglePlay
+    );
+}
+
 void MainWindow::selectAlgorithm(int index)
 {
+    scene->pause();
+    ui->togglePlayButton->setText("Play");
+
     scene.reset();
     if(index == 0){
         // Bubble Sort
-        scene = std::make_unique<BubbleSortScene>();
+        initiateScene<BubbleSortScene>();
     }else if(index == 1){
         // Insertion Sort
-        scene = std::make_unique<InsertionSortScene>();
+        initiateScene<InsertionSortScene>();
     }
 
     ui->graphicsView->setScene(scene.get());
