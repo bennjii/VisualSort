@@ -2,11 +2,12 @@
 #include "ui_mainwindow.h"
 
 #include "insertionsortscene.h"
+#include "bubblesortscene.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , scene(new InsertionSortScene)
+    , scene(new BubbleSortScene)
 {
     ui->setupUi(this);
     connect(

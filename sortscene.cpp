@@ -95,8 +95,8 @@ int SortScene::getBarCount(){
 void SortScene::swap(int first, int second)
 {
     std::swap(bars[first], bars[second]);
-    bars[pos]->setBrush(QColor(255,255,0));
-    bars[pos + 1]->setBrush(QColor(255,255,0));
+    //bars[pos]->setBrush(QColor(255,255,0));
+    //bars[pos + 1]->setBrush(QColor(255,255,0));
 
     updatePos(first);
     updatePos(second);
