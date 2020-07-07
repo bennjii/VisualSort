@@ -20,6 +20,11 @@ MainWindow::MainWindow(QWidget *parent)
     );
 
     connect(
+       ui->resetButton, &QPushButton::clicked,
+       this, &MainWindow::selectAlgorithm
+    );
+
+    connect(
         ui->algoBox, QOverload<int>::of(&QComboBox::activated),
         this, &MainWindow::selectAlgorithm
     );
@@ -68,6 +73,8 @@ void MainWindow::selectAlgorithm(int index)
 {
     scene->pause();
     ui->togglePlayButton->setText("Play");
+
+    index = ui->algoBox->currentIndex();
 
     scene.reset();
     if(index == 0){

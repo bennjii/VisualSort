@@ -15,6 +15,9 @@ void BubbleSortScene::step() {
 
     if(!compare(pos, pos + 1)){
         swap(pos, pos + 1);
+
+        setColour(pos, QColor(255,255,0));
+        setColour(pos+1, QColor(255,255,0));
     }else{
         if(sortedCount < getBarCount() - 2){
             setColour(pos, QColor(255,255,255));

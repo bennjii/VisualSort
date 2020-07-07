@@ -24,6 +24,7 @@ public:
     void shuffle();
     void swap(int first, int second);
     void setColour(int i, const QColor &colour);
+    void setColourRange(int min, int max, const QColor &colour);
 
 signals:
     void finished();
