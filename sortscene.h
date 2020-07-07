@@ -11,6 +11,9 @@ class SortScene : public QGraphicsScene
 public:
     SortScene();
     bool isPlaying();
+    bool compare(int first, int second);
+
+    int getBarCount();
 
  public slots:
     virtual void step();
@@ -20,6 +23,7 @@ public:
 
     void shuffle();
     void swap(int first, int second);
+    void setColour(int i, const QColor &colour);
 
 private:
     void updatePos(int i);

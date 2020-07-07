@@ -78,6 +78,20 @@ void SortScene::step(){
     }
 }
 
+void SortScene::setColour(int index, const QColor &colour)
+{
+    bars[index]->setBrush(colour);
+}
+
+bool SortScene::compare(int first, int second)
+{
+    return bars[first]->rect().height() < bars[second]->rect().height();
+}
+
+int SortScene::getBarCount(){
+    return barCount;
+}
+
 void SortScene::swap(int first, int second)
 {
     std::swap(bars[first], bars[second]);
