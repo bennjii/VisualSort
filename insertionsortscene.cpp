@@ -13,6 +13,8 @@ void InsertionSortScene::step()
     }
 
     if(pos == -1 || compare(pos, pos+1)){
+        setColour(pos + 1, QColor(0,255,0));
+
         pos = sortedCount;
         ++sortedCount;
     }else{
@@ -20,10 +22,3 @@ void InsertionSortScene::step()
         --pos;
     }
 }
-
-
-//void InsertionSortScene::renderFrame()
-//{
-//    if(v[i] == queued)  setColour(0, QColor(8,55,255));
-//    else setColour(0, QColor(0,255,0));
-//}

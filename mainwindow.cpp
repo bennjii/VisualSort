@@ -21,11 +21,16 @@ MainWindow::MainWindow(QWidget *parent)
     );
 
     connect(
-        scene, &SortScene::finished,
+        scene.get(), &SortScene::finished,
         this, &MainWindow::togglePlay
     );
 
-    ui->graphicsView->setScene(scene);
+    connect(
+        ui->algoBox, QOverload<int>::of(&QComboBox::activated),
+        this, &MainWindow::selectAlgorithm
+    );
+
+    ui->graphicsView->setScene(scene.get());
 }
 
 MainWindow::~MainWindow()
@@ -47,4 +52,18 @@ void MainWindow::togglePlay()
         scene->play();
         ui->togglePlayButton->setText("Pause");
     }
+}
+
+void MainWindow::selectAlgorithm(int index)
+{
+    scene.reset();
+    if(index == 0){
+        // Bubble Sort
+        scene = std::make_unique<BubbleSortScene>();
+    }else if(index == 1){
+        // Insertion Sort
+        scene = std::make_unique<InsertionSortScene>();
+    }
+
+    ui->graphicsView->setScene(scene.get());
 }

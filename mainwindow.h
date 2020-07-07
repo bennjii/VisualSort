@@ -3,6 +3,7 @@
 
 #include "sortscene.h"
 #include <QMainWindow>
+#include <QComboBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,9 +20,10 @@ public:
 public slots:
     void togglePlay();
     void step();
+    void selectAlgorithm(int index);
 
 private:
     Ui::MainWindow *ui;
-    SortScene *scene;
+    std::unique_ptr<SortScene> scene;
 };
 #endif // MAINWINDOW_H
