@@ -20,10 +20,17 @@ public:
     template<class T>
     void initiateScene();
 
+    static constexpr QColor normal = QColor(255, 209, 217);
+    static constexpr QColor completed = QColor(162, 234, 147);
+    static constexpr QColor checking = QColor(234, 219, 147);
+
+
 public slots:
     void togglePlay();
     void step();
     void selectAlgorithm(int index);
+
+
 
 private:
     Ui::MainWindow *ui;

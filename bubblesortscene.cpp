@@ -7,8 +7,8 @@ BubbleSortScene::BubbleSortScene()
 
 void BubbleSortScene::step() {
     if(sortedCount == getBarCount()){
-        setColour(0, QColor(0,255,0));
-        setColour(1, QColor(0,255,0));
+        setColour(0, MainWindow::completed);
+        setColour(1, MainWindow::completed);
         emit finished();
         return;
     }
@@ -16,28 +16,28 @@ void BubbleSortScene::step() {
     if(!compare(pos, pos + 1)){
         swap(pos, pos + 1);
 
-        setColour(pos, QColor(255,255,0));
-        setColour(pos+1, QColor(255,255,0));
+        setColour(pos, MainWindow::checking);
+        setColour(pos+1, MainWindow::checking);
     }else{
         if(sortedCount < getBarCount() - 2){
-            setColour(pos, QColor(255,255,255));
-            setColour(pos+1, QColor(255,255,255));
+            setColour(pos, MainWindow::normal);
+            setColour(pos+1, MainWindow::normal);
         }
 
         ++pos;
         if(pos >= (getBarCount() - sortedCount) - 1) {
-            setColour((getBarCount() - 1) - sortedCount, QColor(0,255,0));
+            setColour((getBarCount() - 1) - sortedCount, MainWindow::completed);
             pos = 0;
             ++sortedCount;
         }
 
         if(sortedCount < getBarCount() - 1){
-            setColour(pos, QColor(255,255,255));
-            setColour(pos+1, QColor(255,255,255));
+            setColour(pos, MainWindow::normal);
+            setColour(pos+1, MainWindow::normal);
         }
 
         if(pos >= (getBarCount() - sortedCount) - 1) {
-            setColour(getBarCount() - sortedCount, QColor(0,255,0));
+            setColour(getBarCount() - sortedCount, MainWindow::completed);
         }
     }
 }

@@ -2,6 +2,7 @@
 #define INSERTIONSORTSCENE_H
 
 #include "sortscene.h"
+#include "mainwindow.h"
 
 class InsertionSortScene : public SortScene
 {

@@ -20,6 +20,9 @@ SortScene::SortScene()
             barWidth,
             barWidth * (i + 1)
         ));
+
+        bars[i]->setPen(QColor(0,0,0,0));
+        bars[i]->setBrush(MainWindow::normal);
     }
 
     shuffle();
@@ -45,37 +48,6 @@ void SortScene::updatePos(int i)
 }
 
 void SortScene::step(){
-    if(sortedCount == barCount){
-        bars[0]->setBrush(QColor(0,255,0));
-        bars[1]->setBrush(QColor(0,255,0));
-        &MainWindow::togglePlay;
-        return;
-    }
-
-    if(bars[pos]->rect().height() > bars[pos + 1]->rect().height()){
-        swap(pos, pos + 1);
-    }else{
-        if(sortedCount < barCount - 2){
-            bars[pos]->setBrush(QColor(255,255,255));
-            bars[pos + 1]->setBrush(QColor(255,255,255));
-        }
-
-        ++pos;
-        if(pos >= (barCount - sortedCount) - 1) {
-            bars[(barCount - 1) - sortedCount]->setBrush(QColor(0,255,0));
-            pos = 0;
-            ++sortedCount;
-        }
-
-        if(sortedCount < barCount - 1){
-            bars[pos]->setBrush(QColor(255,0,0));
-            bars[pos + 1]->setBrush(QColor(255,0,0));
-        }
-
-        if(pos >= (barCount - sortedCount) - 1) {
-            bars[(barCount - sortedCount)]->setBrush(QColor(0,255,0));
-        }
-    }
 }
 
 void SortScene::setColour(int index, const QColor &colour)

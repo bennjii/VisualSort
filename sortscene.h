@@ -40,7 +40,7 @@ private:
     int sortedCount = 0;
     int pos = 0;
 
-    int delay = 25;
+    int delay = 75;
 
     QTimer timer;
 };

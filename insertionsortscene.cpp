@@ -13,7 +13,7 @@ void InsertionSortScene::step()
     }
 
     if(pos == -1 || compare(pos, pos+1)){
-        setColourRange(sortedCount, getBarCount(), QColor(25,25,255));
+        setColourRange(sortedCount, getBarCount(), MainWindow::normal);
 
         pos = sortedCount;
         ++sortedCount;
